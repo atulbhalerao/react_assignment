@@ -18,7 +18,7 @@ function WeatherDashboard()
         //     if(position)
         //     {
         //         setLocation({ lat : position.coords.latitude, long : position.coords.longitude }) 
-        //         //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false&key=AIzaSyCsEcDTfhR48JLEgK35HPsxaUr-o8m37ZA
+        //         //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false&key=key
         //         const objWeatherService = new  WeatherService();
         //         objWeatherService.GetWeatherReportByLatLong({ lat : position.coords.latitude, long : position.coords.longitude }, 
         //             (response)=>{
@@ -34,7 +34,7 @@ function WeatherDashboard()
             if(position)
             {
                 setLocation({ lat : position.coords.latitude, long : position.coords.longitude }) 
-                //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false&key=AIzaSyCsEcDTfhR48JLEgK35HPsxaUr-o8m37ZA
+                //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false&key=key
                 const objWeatherService = new  WeatherService();
                 objWeatherService.GetWeatherReportByLatLong({ lat : position.coords.latitude, long : position.coords.longitude }, 
                     (response)=>{
