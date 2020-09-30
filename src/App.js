@@ -6,6 +6,7 @@ import HelloWorld from './Components/HelloWorld';
 import EmployeeList from './Components/EmployeeList';
 import AddEmployee from './Components/AddEmployee';
 import Calculator from './Components/Calculator';
+import DigitalClock from './Components/DigitalClock';
 
 function App() {
   console.dir(this);
@@ -14,7 +15,9 @@ function App() {
       {/* <HelloWorld></HelloWorld>       */}
       {/* <EmployeeList></EmployeeList> */}
       {/* <Calculator></Calculator> */}
-    <AddEmployee></AddEmployee>
+      {/* <AddEmployee></AddEmployee> */}
+      <Calculator></Calculator>
+      {/* <DigitalClock></DigitalClock> */}
     </div>
     // <div className="App">  
     //  <Router>    
