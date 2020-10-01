@@ -34,7 +34,8 @@ function EmployeeList(props)
     //     //https://my-json-server.typicode.com/atulbhalerao/react_assignment
     //     //https://jsonplaceholder.typicode.com/
     //     //npm install —-save axios
-    //     //npm install react-router-dom --saven
+    //     //npm install react-router-dom --save
+    //     //npm install font-awesome --save
        
     //     axios.get('https://my-json-server.typicode.com/atulbhalerao/jsondb/employee')
     //         .then((res)=>{

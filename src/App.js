@@ -16,8 +16,8 @@ function App() {
       {/* <EmployeeList></EmployeeList> */}
       {/* <Calculator></Calculator> */}
       {/* <AddEmployee></AddEmployee> */}
-      <Calculator></Calculator>
-      {/* <DigitalClock></DigitalClock> */}
+      {/* <Calculator></Calculator> */}
+      <DigitalClock></DigitalClock>
     </div>
     // <div className="App">  
     //  <Router>    
