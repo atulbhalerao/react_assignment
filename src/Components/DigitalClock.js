@@ -21,7 +21,7 @@ function DigitalClock()
         formatTime(datetime);
     }
 
-    //setInterval(UpdateDateTime, 1000);
+    setInterval(UpdateDateTime, 1000);
 
     const toggleButtonChange = (e) => {  
         if(e.target.checked)
