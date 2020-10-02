@@ -65,7 +65,7 @@ function EmployeeList(props)
                         <tr key= {item.id}>
                             <td>{item.name}</td>
                             <td>{item.job}</td>
-                            <td><input className="btn btn-primary" type="button" value="Delete" onClick= {() => deleteEmployee(item.id)}></input></td>
+                            <td><input className="btn btn-primary btn-sm" type="button" value="Delete" onClick= {() => deleteEmployee(item.id)}></input></td>
                         </tr>)
                     })
                 }

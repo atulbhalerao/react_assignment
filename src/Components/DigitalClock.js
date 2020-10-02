@@ -21,7 +21,7 @@ function DigitalClock()
         formatTime(datetime);
     }
 
-    setInterval(UpdateDateTime, 1000);
+    //setInterval(UpdateDateTime, 1000);
 
     const toggleButtonChange = (e) => {  
         if(e.target.checked)
@@ -54,9 +54,9 @@ function DigitalClock()
 
     return(<>
         <div className="row">
-            <div className="col-md-5">
+            <div className="col-md-4">
             </div>
-            <div className="col-md-2">
+            <div className="col-md-4">
                 <div className="card">
                     <div className="card-header" style={headerCss}>
                         <i className="fa fa-clock-o" aria-hidden="true" style={{ fontSize:'1.5em' }}></i>&nbsp;<span style={{ fontSize:'1.3em' }}>Digital Clock</span>
@@ -86,7 +86,7 @@ function DigitalClock()
                     </div>
                 </div>
             </div>
-            <div className="col-md-5">
+            <div className="col-md-4">
             </div>
         </div>
     </>)    

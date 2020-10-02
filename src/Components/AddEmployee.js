@@ -28,7 +28,7 @@ function AddEmployee(props)
             let emp = {...employee} // copying the old datas array
 
             const locatStoredEmp = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-            if(locatStoredEmp)
+            if(locatStoredEmp && locatStoredEmp.length > 0)
             {
                 var newId = getMax(locatStoredEmp, 'id').id + 1;
                 emp.id = newId;
