@@ -42,7 +42,7 @@ function Calculator(){
             
             if(_num.trim().split(' ').length >= 3)
             {
-                console.dir(_num.trim().split(' '))
+                //console.dir(_num.trim().split(' '))
                 _num = eval(_num.replace('x', '*').replace('÷', '/').replace('=', ''))
             }
         }
