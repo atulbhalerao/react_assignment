@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 
-const API_KEY = 'KEY'
+const API_KEY = 'API_KEY'
 class WeatherService {
     DoAxiosCall = (callback) =>{
         axios.get('https://my-json-server.typicode.com/atulbhalerao/jsondb/employee')
