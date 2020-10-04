@@ -17,16 +17,18 @@ function DailyWeatherForecast(props)
         }
     }, [props.value]);
 
-    return(<>
-        <div style={{width:'33%'}}>
-            <span>{dailyWeather.date ? `${dailyWeather.date.split(' ')[0] } ${dailyWeather.date.split(' ')[2] }` : ''}</span><br></br>
+    return(
+        <div style={{width:'100px'}}>
+            <span style={{fontSize:'14px'}} >{dailyWeather.date ? `${dailyWeather.date.split(' ')[0] } ${dailyWeather.date.split(' ')[2] }` : ''}</span><br></br>
             <span>
                 <img src={dailyWeather.icon} alt="Logo" />
             </span><br></br>
-            <span>{Math.round(dailyWeather.dayTemp)} °</span>&nbsp;&nbsp;&nbsp;<span>{Math.round(dailyWeather.nightTemp)} °</span><br></br>
-            <span>{dailyWeather.mainWeather}</span>
+            <span style={{fontWeight:'bold'}}>{Math.round(dailyWeather.dayTemp)} °</span>
+            &nbsp;&nbsp;&nbsp;
+            <span style={{fontSize:'12px'}} >{Math.round(dailyWeather.nightTemp)} °</span><br></br>
+            <span style={{fontSize:'14px'}} >{dailyWeather.mainWeather}</span>
         </div>
-    </>)
+    )
 }
 
 export default DailyWeatherForecast;

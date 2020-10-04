@@ -9,9 +9,9 @@ function CurrentWeather(props)
     useEffect(()=>{
         if(props.value.daily.length > 0)
         {
-            console.dir(props)
+            //console.dir(props.value)
             let objWeatherService =new WeatherService();
-            setCurrent({location : '', 
+            setCurrent({location : props.value.city, 
                         currentDT: objWeatherService.unixTimestampToDate(props.value.current.dt).time,
                         minTemp : props.value.daily[0].temp.min, 
                         maxTemp : props.value.daily[0].temp.max, 
@@ -22,15 +22,15 @@ function CurrentWeather(props)
     }, [props.value.daily]);
 
     return(<>
-        <span>Mumbai</span><br></br>
+        <span style={{ fontWeight:"bold" }}>{currentWeather.location }</span><br></br>
         <span> { Math.round(currentWeather.minTemp) }° | { Math.round(currentWeather.maxTemp) }°</span>
         <h2>{currentWeather.currentTemp } ° <sup>c</sup></h2>
         <div>
             <img src={currentWeather.icon} alt="Logo" /><span>{currentWeather.mainWeather }</span>
         </div>
-        <span>updated as of {currentWeather.currentDT? `${currentWeather.currentDT.split(':')[0]}:${currentWeather.currentDT.split(':')[1]}` : ''} &nbsp;&nbsp; 
+        <span style={{ fontSize:"14px" }}>updated as of {currentWeather.currentDT? `${currentWeather.currentDT.split(':')[0]}:${currentWeather.currentDT.split(':')[1]}` : ''} &nbsp;&nbsp; 
         <a onClick= {() => { props.callBack(true) }} 
-            style={{color:'green', cursor:"pointer"}}>
+            style={{color:'green', cursor:"pointer", fontSize:"18px"}}>
                 <i className="fa fa-refresh" aria-hidden="true"></i>
         </a>
         </span>

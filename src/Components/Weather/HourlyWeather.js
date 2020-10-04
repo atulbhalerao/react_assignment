@@ -13,18 +13,17 @@ function HourlyWeather(props)
         }
     }, [props.value.hourly.length]);
 
-    return(<>
-        <div >
-        <h5>Hourly</h5>
-        {
-            hourlyWeather.map((item, index)=>{
-                return (
-                    <HourlyWeatherForecast key={index} value={ item }></HourlyWeatherForecast>
-                )
-            })           
-            }
-        </div>
-    </>)
+    return(<div style={{display:"flex", flex:1, overflow:'auto'}} >
+            <div style={{display:"flex"}} >
+            {
+                hourlyWeather.map((item, index)=>{
+                    return (
+                        <HourlyWeatherForecast key={index} value={ item }></HourlyWeatherForecast>
+                    )
+                })           
+                }
+            </div>
+        </div>)
 }
 
 export default HourlyWeather;

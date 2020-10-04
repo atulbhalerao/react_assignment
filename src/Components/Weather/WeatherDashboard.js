@@ -4,13 +4,16 @@ import WeatherHeader from './WeatherHeader'
 import DailyWeather from './DailyWeather'
 import HourlyWeather from './HourlyWeather'
 import WeatherService from './Service/WeatherService'
+import GeoLocationService from './Service/GeoLocationService'
+
+
 
 function WeatherDashboard()
 {
-    let geoLoc = { lat : '', long : '' };
+    let geoLoc = { lat : '', long : '', city : '' };
     const [location, setLocation] = useState(geoLoc);
-    const [weather, setWeather] = useState({current : {}, hourly : [], daily : []});
-    const [reload, setReload] = useState(false);
+    const [weather, setWeather] = useState({current : {}, hourly : [], daily : [], city : ''});
+    //const [reload, setReload] = useState(false);
     let count = 0;
     useEffect(()=>{
         PopulateWeatherData();
@@ -27,19 +30,28 @@ function WeatherDashboard()
         //         });
         //     }
         // });
-    }, [weather.daily.length]);
+    }, [weather.daily.length, location.city]);
 
     const PopulateWeatherData = (val)=>{
         navigator.geolocation.getCurrentPosition(function(position) {
             if(position)
             {
-                setLocation({ lat : position.coords.latitude, long : position.coords.longitude }) 
-                //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&sensor=false&key=key
+                setLocation({ lat : position.coords.latitude, long : position.coords.longitude, city : location.city }) 
+                
                 const objWeatherService = new  WeatherService();
                 objWeatherService.GetWeatherReportByLatLong({ lat : position.coords.latitude, long : position.coords.longitude }, 
                     (response)=>{
                         count++;
-                        setWeather({current : response.current, hourly : response.hourly, daily : response.daily});
+                        setWeather({current : response.current, hourly : response.hourly, daily : response.daily, city : location.city });
+                        const objGeoLocationService = new GeoLocationService();
+                        objGeoLocationService.GetLocationDetailsByLatLong({ lat : position.coords.latitude, long : position.coords.longitude },
+                            (res)=>{
+                                if(res.city)
+                                {
+                                    setLocation({ lat : position.coords.latitude, long : position.coords.longitude, city : res.city});
+                                    setWeather({current : response.current, hourly : response.hourly, daily : response.daily, city : res.city});
+                                }
+                            })
                 });
             }
         });
@@ -47,49 +59,27 @@ function WeatherDashboard()
     
     return(<>
         <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-2">
             </div>
-            <div className="col-md-4">
+            <div className="col-md-8">
                 <div className="card">
                     <WeatherHeader></WeatherHeader>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">
-                            <CurrentWeather callBack={(val)=> PopulateWeatherData(val)} value={ { current : weather.current, daily : weather.daily }}></CurrentWeather>
+                            <CurrentWeather callBack={(val)=> PopulateWeatherData(val)} value={ { current : weather.current, daily : weather.daily, city : weather.city }}></CurrentWeather>
                         </li>
                         <li className="list-group-item">
+                            <h5>Daily</h5>
                             <DailyWeather  value={ { daily : weather.daily }}></DailyWeather>
                         </li>
                         <li className="list-group-item">
+                            <h5>Hourly</h5>
                             <HourlyWeather value={ { hourly : weather.hourly }}></HourlyWeather>
                         </li>
                     </ul>
-                    
-                    {/* <div className="card-header" style={headerCss}>
-                        <i className="fa fa-clock-o" aria-hidden="true" style={{ fontSize:'1.5em' }}></i>
-                        &nbsp;<span style={{ fontSize:'1.3em' }}>Digital Clock</span>
-                    </div>
-                    <div className="card-body justify-content-center" style={ { display: "grid" }}>
-                        <div>
-                            <label className={style.switch} style={{ fontSize:'0.6em' }}>
-                                <input id="chkDate" type="checkbox" onChange={ toggleButtonChange }></input>
-                                <span className={style.slider}></span>
-                            </label>
-                            &nbsp;<i className="fa fa-calendar fa-lg" style={{ fontSize:'1.1em' }}></i>
-                        </div>
-                        <br></br>
-                        <div className={ style.mainCircle }>
-                            <div className={ style.circleTime }>
-                                <span >{ dtFormatted.time  } </span>
-                                <br></br>
-                                <span  className={ style.circleDate } style={ { display: toggleBtn }} >
-                                    { dtFormatted.date }
-                                </span>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-2">
             </div>
         </div>
     </>)

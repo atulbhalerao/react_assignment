@@ -13,19 +13,17 @@ function DailyWeather(props)
         }
     }, [props.value.daily.length]);
 
-    return(<>
-        <div >
-        <h5>Daily</h5>
-        {
-            
-            dailyWeather.map((item, index)=>{
-                return (
-                    <DailyWeatherForecast key={index} value = { item }></DailyWeatherForecast>
-               )
-            })           
-        }
-        </div>
-    </>)
+    return(<div style={{display:"flex", flex:1, overflow:'auto'}} >
+            <div style={{display:"flex"}}>
+            {
+                dailyWeather.map((item, index)=>{
+                    return (
+                        <DailyWeatherForecast key={index} value = { item }></DailyWeatherForecast>
+                )
+                })           
+            }
+            </div></div>
+    )
 }
 
 export default DailyWeather;

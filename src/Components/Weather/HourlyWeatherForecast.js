@@ -17,16 +17,16 @@ function HourlyWeatherForecast(props)
         }
     }, [props.value]);
 
-    return(<>
-        <div style={{width:'33%'}}>
-            <span>{`${hourlyWeather.time.split(':')[0]}:${hourlyWeather.time.split(':')[1]}`}</span><br></br>
+    return(
+        <div style={{width:'80px'}}>
+            <span style={{fontSize:'14px'}}>{`${hourlyWeather.time.split(':')[0]}:${hourlyWeather.time.split(':')[1]}`}</span><br></br>
             <span>
                 <img src={hourlyWeather.icon} alt="Logo" />
             </span><br></br>
-            <span>{Math.round(hourlyWeather.temp)} °</span><br></br>
-            <span>{hourlyWeather.mainWeather}</span>
+            <span style={{fontWeight:'bold'}}>{Math.round(hourlyWeather.temp)} °</span><br></br>
+            <span style={{fontSize:'14px'}}>{hourlyWeather.mainWeather}</span>
         </div>
-    </>)
+    )
 }
 
 export default HourlyWeatherForecast;
